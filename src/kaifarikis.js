@@ -15,8 +15,9 @@ for (let i = 0; i < kaifarikisNames.length; i++) {
     //console.log(kaifarikisObjTemp)
     kaifarikisArr.push(kaifarikisObjTemp)
 }
+let gayText
 kaifarikisArr.forEach(element => {
+    element.isGay ? gayText = `he's gay for sure` : gayText = `he's not gay`
     console.log(`
-    Kaifarik ${element.name} is ${element.age} years old, ${element.color}, and if you ask if he's gay, that's totally ${element.isGay}
-    `)
+    Kaifarik ${element.name} is ${element.age} years old, ${element.color}, and if you ask if he's gay, ${gayText}`)
 });
