@@ -10,5 +10,7 @@ const logHelloWorldWithAdjective = (adj) => {
 }
 logHelloWorldWithAdjective('JS')
 
-logHelloWorldWithAdjective = 2 //expected output is TypeError since we declaring function with const keyword
-console.log(logHelloWorldWithAdjective)
+/*logHelloWorldWithAdjective = 2 //expected output is TypeError since we declaring function with const keyword
+console.log(logHelloWorldWithAdjective)*/
+
+logHelloWorldWithAdjective('homo sapiens')
