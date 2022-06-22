@@ -11,11 +11,9 @@ let availableColors = ['Red', 'Blue', 'Green']
 let kaifarikisArr = []
 
 for (let i = 0; i < kaifarikisNames.length; i++) {
-    for (let j = 0; j < availableColors.length; j++) {
-        let kaifarikisObjTemp = kaifarikCreator(kaifarikisNames[i], availableColors[j], Math.floor(Math.random() * 30), Math.random() < 0.5)
-        //console.log(kaifarikisObjTemp)
-        kaifarikisArr.push(kaifarikisObjTemp)
-    }
+    let kaifarikisObjTemp = kaifarikCreator(kaifarikisNames[i], availableColors[i], Math.floor(Math.random() * 30), Math.random() < 0.5)
+    //console.log(kaifarikisObjTemp)
+    kaifarikisArr.push(kaifarikisObjTemp)
 }
 kaifarikisArr.forEach(element => {
     console.log(`
