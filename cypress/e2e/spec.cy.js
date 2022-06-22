@@ -6,6 +6,6 @@ describe('empty spec', () => {
       request += '{enter}'
       cy.get('.gLFyf').type(request)
     }
-    letMeGoogle4u('How to run a test in cypress?')
+    letMeGoogle4u('Do a barrel roll')
   })
 })
