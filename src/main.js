@@ -15,3 +15,10 @@ logHelloWorldWithAdjective('JS')
 console.log(logHelloWorldWithAdjective)*/
 
 logHelloWorldWithAdjective('homo sapiens')
+
+
+const letMeGoogle4u = (request) =>{
+    request += '{enter}'
+    console.log(request)
+  }
+letMeGoogle4u('heyou')
