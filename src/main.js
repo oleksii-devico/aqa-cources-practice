@@ -21,4 +21,15 @@ const letMeGoogle4u = (request) =>{
     request += '{enter}'
     console.log(request)
   }
-letMeGoogle4u('heyou')
+
+  const randomString = (length) => {
+    let result = ''
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let lettersLength = letters.length
+
+    for (let i = 0; i < length; i++){
+        result+=letters.charAt(Math.floor(Math.random()* lettersLength));
+    }
+    return result
+  }
+  console.log(randomString(10))
