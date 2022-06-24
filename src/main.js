@@ -1,10 +1,10 @@
-function testReassignment(){
+function testReassignment() {
     console.log('I am the function!')
 }
 testReassignment();
 console.log(testReassignment)
 testReassignment = 2 //checking that function could be reassigned
-console.log(`I was a function before, but now I'm '${testReassignment}'`) 
+console.log(`I was a function before, but now I'm '${testReassignment}'`)
 
 const logHelloWorldWithAdjective = (adj) => {
     console.log(`Hello ${adj} World!`)
@@ -17,19 +17,15 @@ console.log(logHelloWorldWithAdjective)*/
 logHelloWorldWithAdjective('homo sapiens')
 
 
-const letMeGoogle4u = (request) =>{
-    request += '{enter}'
-    console.log(request)
-  }
-
-  const randomString = (length) => {
+const randomString = (length) => {
     let result = ''
-    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    let lettersLength = letters.length
+    let cymbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let lettersLength = cymbols.length
 
-    for (let i = 0; i < length; i++){
-        result+=letters.charAt(Math.floor(Math.random()* lettersLength));
+    for (let i = 0; i < length; i++) {
+        result += cymbols.charAt(Math.floor(Math.random() * lettersLength));
     }
     return result
-  }
-  console.log(randomString(10))
+}
+let randomStringResult = randomString(5)
+console.log(randomStringResult)
