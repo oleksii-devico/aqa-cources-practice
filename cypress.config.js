@@ -1,3 +1,4 @@
+const cypress = require("cypress");
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -7,4 +8,6 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
+  viewportHeight: 1080,
+  viewportWidth: 1920
 });
