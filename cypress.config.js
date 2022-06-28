@@ -1,6 +1,6 @@
-import { defineConfig } from "cypress";
+const { defineConfig } = require("cypress");
 
-export default defineConfig({
+module.exports = defineConfig({
   projectId: 'vixnrq',
   e2e: {
     setupNodeEvents(on, config) {
