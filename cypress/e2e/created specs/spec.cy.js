@@ -1,5 +1,5 @@
-describe('empty spec', () => {
-  it('passes', () => {
+describe('lmgfy', () => {
+  it('Googles it for you', () => {
     cy.visit('https://google.com')
 
     const letMeGoogle4u = (request) =>{
