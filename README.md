@@ -4,3 +4,5 @@ Steps to start testing:
 1. Clone repo
 2. run npm install
 3. run npx cypress open
+
+# first PR approved by Anatolii got merged!
