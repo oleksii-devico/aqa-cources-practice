@@ -5,4 +5,4 @@ Steps to start testing:
 2. run npm install
 3. run npx cypress open
 
-# first PR approved by Anatolii got merged!
+* first PR approved by Anatolii got merged!
