@@ -6,6 +6,6 @@ const getAverageNum = (numbersArr) => {
     })
     return numbersSum / numbersArr.length
 };
-const numbers = [5,1]
+const numbers = [5,1,10,252,1]
 
 console.log(getAverageNum(numbers))
