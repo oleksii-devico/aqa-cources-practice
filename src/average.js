@@ -1,4 +1,3 @@
-
 const getAverageNum = (numbersArr) => {
     let numbersSum = 0
     numbersArr.forEach(element => {
