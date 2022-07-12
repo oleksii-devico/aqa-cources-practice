@@ -1,5 +1,5 @@
-const helloWorldFunction = (adj) => {
-    console.log(`Hello ${adj} world!`)
+const helloWorldFunction = (adjective) => {
+    console.log(`Hello ${adjective} world!`)
 }
 
 let worldDefinition = 'JS'
