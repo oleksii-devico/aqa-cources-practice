@@ -1,7 +1,0 @@
-{
-    "git.branchProtection": [
-        "main"
-    ],
-    "git.pruneOnFetch": true,
-    "git.useEditorAsCommitInput": false
-}
