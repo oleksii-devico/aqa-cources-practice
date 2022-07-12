@@ -23,7 +23,7 @@ const randomString = (length) => {
     let lettersLength = cymbols.length
 
     for (let i = 0; i < length; i++) {
-        result += cymbols.charAt(Math.floor(Math.random() * lettersLength));
+        result += cymbols.charAt(Math.floor(Math.random() * lettersLength))
     }
     return result
 }
