@@ -3,5 +3,5 @@
 /cypress/downloads
 /cypress/screenshots
 
-//ignore JetBrains IDE files
+#ignore JetBrains IDE files
 .idea
