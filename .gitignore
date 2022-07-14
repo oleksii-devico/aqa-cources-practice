@@ -5,6 +5,3 @@
 
 #ignore JetBrains IDE files
 .idea
-
-#ignore cypress-realworld-app repo
-/cypress-realworld-app
