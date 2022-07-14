@@ -44,6 +44,7 @@ describe('UI tests for sign in page', () => {
   })
   it("should show Cypress copyright link that leads to 'https://www.cypress.io/'", () => {
     cy.get(sign_in_page.cypress_copyright).should('have.attr', 'href', 'https://cypress.io')
+      .and('have.attr', 'target', '_blank') //check that the link will be opened in a new tab
   })
 
   it.skip("should open cypress.io link by clicking on cypress copyright", () => {
