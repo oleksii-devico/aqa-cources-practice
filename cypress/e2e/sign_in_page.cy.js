@@ -32,7 +32,8 @@ describe('UI tests for sign in page', () => {
     cy.get(sign_in_page.username_required_msg).should('be.visible')
   })
   it('check "Remember me" checkbox', () => {
-    cy.get(sign_in_page.rememberMe_checkbox).check()
+    cy.get(sign_in_page.rememberMe_checkbox).should('not.be.checked')
+      .check().should('be.checked')
   })
   it('should show disabled by default sign in btn', () => {
     cy.get(sign_in_page.signIn_button).should('be.disabled') //this button is enabled by default in the app so test fails :)
