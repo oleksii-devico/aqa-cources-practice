@@ -1,10 +1,13 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: 'vixnrq',
   e2e: {
     baseUrl: 'http://localhost:3000',
-    watchForFileChanges: true,
-    numTestsKeptInMemory: 50,
+    retries: {
+      runMode: 2,
+      openMode: 1,
+    },
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
 
