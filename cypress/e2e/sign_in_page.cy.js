@@ -4,18 +4,15 @@ import { sign_in_page } from "../selectors/sign_in_page";
 
 describe('UI tests for sign in page', () => {
 
-  beforeEach('visiting sign in page', () => { //using beforeEach because some tests are changing DOM state
+  before('visiting sign in page', () => {
     cy.visit('/')
   })
-
   it('should show "Real World App logo"', () => {
     cy.get(sign_in_page.logo_image).should('be.visible').and('have.attr', 'xmlns', 'http://www.w3.org/2000/svg')
   })
-
   it('should show "Sign in" title', () => {
     cy.get(sign_in_page.title_text).should('be.visible').and('have.text', 'Sign in')
   })
-  //hw1 cases below
   it('should show typeable Username field', () => {
     cy.get(sign_in_page.username_field).should('be.visible').type('asdasd').clear()
   })
@@ -27,6 +24,7 @@ describe('UI tests for sign in page', () => {
     cy.get(sign_in_page.password_title).should('have.text', 'Password')
   })
   it("should show 'Username is required' error if user clicks on it and then click outside this field and didn't enter any value", () => {
+    cy.reload()
     cy.get(sign_in_page.username_required_msg).should('not.exist')
     cy.get(sign_in_page.username_field).click().blur()
     cy.get(sign_in_page.username_required_msg).should('be.visible')
@@ -36,12 +34,11 @@ describe('UI tests for sign in page', () => {
       .check().should('be.checked')
   })
   it('should show disabled by default sign in btn', () => {
+    cy.reload()
     cy.get(sign_in_page.signIn_button).should('be.disabled') //this button is enabled by default in the app so test fails :)
   })
   it("should have 'Don't have an account? Sign Up' clickable link under 'Sign in' btn", () => {
     cy.get(sign_in_page.signUp_link).should('have.text', "Don't have an account? Sign Up").and('have.attr', 'href', '/signup')
-      .click()
-    cy.url().should('contain', '/signup')
   })
   it("should show Cypress copyright link that leads to 'https://www.cypress.io/'", () => {
     cy.get(sign_in_page.cypress_copyright).should('have.attr', 'href', 'https://cypress.io')
