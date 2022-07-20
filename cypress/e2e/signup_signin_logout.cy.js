@@ -40,7 +40,7 @@ describe('Sign-in, sign-up, logout checks', () => {
         cy.get(sign_up_page.confirmPassword_validation_message).should('be.visible').and('have.text', 'Confirm your password')
         cy.get(sign_up_page.confirmPassword_field).type('qweqwe').blur()
         cy.get(sign_up_page.confirmPassword_validation_message).should('be.visible').and('have.text', 'Password does not match')
-        cy.get(sign_up_page.confirmPassword_field).clear().blur()
+        cy.get(sign_up_page.confirmPassword_field).clear()
     })
     it('should allow user to sign up', () => {
         cy.intercept("POST", "/users").as("signup")
