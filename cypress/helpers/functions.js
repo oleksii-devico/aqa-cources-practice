@@ -1,12 +1,12 @@
 export const functions = {
   generateUsername() {
     const names = [
-      "Alex",
-      "Viktor",
-      "Ivan",
-      "Ostap",
-      "Igor",
-      "Michael",
+      "alex",
+      "viktor",
+      "ivan",
+      "ostap",
+      "igor",
+      "michael",
       "nagibator2007",
     ];
     const randomNum = Math.floor(Math.random() * 1000);
