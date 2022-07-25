@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/oleksii-devico/aqa-cources-practice#readme",
   "devDependencies": {
-    "cypress": "^10.3.0"
+    "cypress": "^10.3.1"
   }
 }

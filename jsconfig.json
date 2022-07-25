@@ -1,7 +1,0 @@
-//Enable IntelliSense for Cypress specs
-{
-    "include": [
-        "./node_modules/cypress",
-        "cypress/**/*cy.js"
-    ]
-}
