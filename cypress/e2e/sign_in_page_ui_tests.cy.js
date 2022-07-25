@@ -30,9 +30,9 @@ describe('UI tests for sign in page', () => {
 
   it("should show 'Username is required' error if user clicks on it and then click outside this field and didn't enter any value", () => {
     cy.reload()
-    cy.get(sign_in_page.username_required_msg).should('not.exist')
+    cy.get(sign_in_page.username_validation_message).should('not.exist')
     cy.get(sign_in_page.username_field).click().blur()
-    cy.get(sign_in_page.username_required_msg).should('be.visible')
+    cy.get(sign_in_page.username_validation_message).should('be.visible')
   })
 
   it('check "Remember me" checkbox', () => {
