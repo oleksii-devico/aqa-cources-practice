@@ -131,7 +131,9 @@ describe("Create and delete bank accounts tests", () => {
 
   it("allows user to delete bank account", () => {
     cy.get(bank_accounts_page.deleteBankAccount_button).first().click();
-    cy.wait("@gqlDeleteBankAccountMutation");
+    cy.wait("@gqlDeleteBankAccountMutation")
+      .its("response.statusCode")
+      .should("eq", 200);
     cy.get(bank_accounts_page.bankAccount_list).children().contains("Deleted");
   });
 });
