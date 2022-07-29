@@ -8,17 +8,29 @@ const noteText = "I'll have two number 9s, number 9 large";
 describe("User is able to create transactions", () => {
   const userName = "Allie2";
   const password = "s3cret";
+  const searchAttrs = [
+    "firstName",
+    "lastName",
+    "username",
+    "email",
+    "phoneNumber",
+  ];
+
+  const targetUser = {
+    firstName: "Edgar",
+    lastName: "Johns",
+    username: "Katharina_Bernier",
+    email: "Norene39@yahoo.com",
+    phoneNumber: "625-316-9882",
+  };
 
   beforeEach("signin", () => {
     cy.intercept("GET", "/users").as("getUsers");
     cy.intercept("POST", "/transactions").as("createTransaction");
     cy.intercept("GET", "/checkAuth").as("checkAuth");
+    cy.intercept("GET", "/users/search*").as("usersSearch");
     cy.signin_ui(userName, password);
     cy.get(main_page.newTransaction_button).click();
-  });
-
-  after("logout", () => {
-    cy.logout_ui();
   });
 
   it("navigates to the new transaction form, selects a user and submits a transaction payment", () => {
@@ -45,9 +57,28 @@ describe("User is able to create transactions", () => {
     cy.get(transactions.pay_button).should("be.disabled");
     cy.get(transactions.request_button).should("be.disabled");
   });
+
+  searchAttrs.forEach((attr) => {
+    it(`Searching by "${attr}" attribute`, () => {
+      cy.wait("@getUsers");
+      cy.get(transactions.search_input).type(targetUser[attr]);
+      cy.wait("@usersSearch")
+        .its("response.body.results")
+        .should("have.length.gt", 0)
+        .its("length")
+        .then((resultsN) => {
+          cy.get(transactions.contacts_list_item)
+            .should("have.length", resultsN)
+            .first()
+            .contains(targetUser[attr]);
+        });
+      cy.focused().clear();
+      cy.get(transactions.contacts_list).should("be.empty");
+    });
+  });
 });
 
-describe("User is able to receive pay and request transactions", () => {
+context("User is able to receive pay and request transactions", () => {
   const payerUserName = "Allie2";
   const receiverUserName = "Katharina_Bernier";
   const password = "s3cret";
@@ -59,10 +90,6 @@ describe("User is able to receive pay and request transactions", () => {
     cy.intercept("PATCH", "/transactions/*").as("updateTransaction");
   });
 
-  /*afterEach("logout", () => {
-    cy.logout_ui();
-  });*/
-
   it("submits a transaction payment and verifies the deposit for the receiver", () => {
     let payerStartBalance, receiverStartBalance;
 
@@ -70,7 +97,7 @@ describe("User is able to receive pay and request transactions", () => {
     cy.get(transactions.user_balance)
       .invoke("text")
       .then((x) => {
-        receiverStartBalance = x; // something like "$1,484.81"
+        receiverStartBalance = x;
         expect(receiverStartBalance).to.match(/\$\d/);
       });
     cy.logout_ui();
@@ -78,7 +105,7 @@ describe("User is able to receive pay and request transactions", () => {
     cy.get(transactions.user_balance)
       .invoke("text")
       .then((x) => {
-        payerStartBalance = x; // something like "$1,484.81"
+        payerStartBalance = x;
         expect(payerStartBalance).to.match(/\$\d/);
       });
     cy.get(main_page.newTransaction_button).click();
