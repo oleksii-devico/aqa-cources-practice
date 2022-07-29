@@ -1,5 +1,6 @@
 export const transactions = {
   contacts_list: '[data-test="users-list"]',
+  contacts_list_item: '[data-test*="user-list-item"]',
   selected_contact_title:
     ".MuiBox-root > .MuiGrid-container > :nth-child(2) > .MuiTypography-root",
   amount_field: "#amount",
@@ -12,6 +13,7 @@ export const transactions = {
   transaction_item: '[data-test*="transaction-item"]',
   accept_transaction_request_button:
     '[data-test*="transaction-accept-request"]',
+  search_input: '[data-test="user-list-search-input"]',
   createPayTransaction(transactionAmount, noteText) {
     cy.wait("@getUsers");
     cy.get(transactions.contacts_list)
