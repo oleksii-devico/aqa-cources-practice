@@ -56,6 +56,7 @@ describe("User is able to receive pay and request transactions", () => {
     cy.intercept("GET", "/users").as("getUsers");
     cy.intercept("POST", "/transactions").as("createTransaction");
     cy.intercept("GET", "/checkAuth").as("checkAuth");
+    cy.intercept("PATCH", "/transactions/*").as("updateTransaction");
   });
 
   /*afterEach("logout", () => {
@@ -87,6 +88,35 @@ describe("User is able to receive pay and request transactions", () => {
     });
     cy.logout_ui();
     cy.signin_ui(receiverUserName, password);
+    cy.url().should("not.contain", "/signin");
+    cy.get(transactions.user_balance).should(($el) => {
+      expect($el.text()).to.not.equal(receiverStartBalance);
+    });
+  });
+
+  it("submits a transaction request and accepts the request for the receiver", () => {
+    let receiverStartBalance;
+
+    cy.signin_ui(payerUserName, password);
+    cy.get(transactions.user_balance)
+      .invoke("text")
+      .then((x) => {
+        receiverStartBalance = x; // something like "$1,484.81"
+        expect(receiverStartBalance).to.match(/\$\d/);
+      });
+    cy.get(main_page.newTransaction_button).click();
+    transactions.createRequestTransaction(transactionAmount, noteText);
+    cy.logout_ui();
+    cy.signin_ui(receiverUserName, password);
+    cy.get(main_page.mine_tab).click();
+    cy.get(transactions.transaction_item)
+      .first()
+      .should("contain", noteText)
+      .click({ force: true });
+    cy.get(transactions.accept_transaction_request_button).click();
+    cy.wait("@updateTransaction").its("response.statusCode").should("eq", 204);
+    cy.logout_ui();
+    cy.signin_ui(payerUserName, password);
     cy.url().should("not.contain", "/signin");
     cy.get(transactions.user_balance).should(($el) => {
       expect($el.text()).to.not.equal(receiverStartBalance);

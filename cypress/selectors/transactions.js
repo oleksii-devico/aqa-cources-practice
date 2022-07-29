@@ -9,6 +9,9 @@ export const transactions = {
   request_button: '[data-test="transaction-create-submit-request"]',
   pay_button: '[data-test="transaction-create-submit-payment"]',
   user_balance: '[data-test="sidenav-user-balance"]',
+  transaction_item: '[data-test*="transaction-item"]',
+  accept_transaction_request_button:
+    '[data-test*="transaction-accept-request"]',
   createPayTransaction(transactionAmount, noteText) {
     cy.wait("@getUsers");
     cy.get(transactions.contacts_list)
