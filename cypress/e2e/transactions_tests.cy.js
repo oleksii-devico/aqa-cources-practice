@@ -83,7 +83,7 @@ context("User is able to receive pay and request transactions", () => {
   const receiverUserName = "Katharina_Bernier";
   const password = "s3cret";
 
-  beforeEach("signin", () => {
+  beforeEach("intercept used requests", () => {
     cy.intercept("GET", "/users").as("getUsers");
     cy.intercept("POST", "/transactions").as("createTransaction");
     cy.intercept("GET", "/checkAuth").as("checkAuth");
