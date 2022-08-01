@@ -115,7 +115,6 @@ context("User is able to receive pay and request transactions", () => {
     });
     cy.logout_ui();
     cy.signin_ui(receiverUserName, password);
-    cy.url().should("not.contain", "/signin");
     cy.get(transactions.user_balance).should(($el) => {
       expect($el.text()).to.not.equal(receiverStartBalance);
     });
@@ -144,7 +143,6 @@ context("User is able to receive pay and request transactions", () => {
     cy.wait("@updateTransaction").its("response.statusCode").should("eq", 204);
     cy.logout_ui();
     cy.signin_ui(payerUserName, password);
-    cy.url().should("not.contain", "/signin");
     cy.get(transactions.user_balance).should(($el) => {
       expect($el.text()).to.not.equal(receiverStartBalance);
     });

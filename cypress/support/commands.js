@@ -48,6 +48,7 @@ Cypress.Commands.add("signin_ui", (userName, password) => {
     .wait("@signin")
     .its("response.statusCode")
     .should("eq", 200);
+  cy.url().should("not.contain", "/signin");
 });
 
 Cypress.Commands.add("onboarding_ui", () => {
