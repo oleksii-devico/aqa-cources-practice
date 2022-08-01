@@ -74,7 +74,6 @@ Cypress.Commands.add("onboarding_ui", () => {
 });
 
 Cypress.Commands.add("logout_ui", () => {
-  cy.intercept("POST", "/logout").as("logout");
   cy.get(main_page.logout_button).click();
   cy.url().should("contain", "signin");
 });
