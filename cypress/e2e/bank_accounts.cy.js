@@ -9,6 +9,7 @@ describe("Create and delete bank accounts tests", () => {
   const bankName = "number nine bank";
 
   before("Prepare account", () => {
+    cy.task("db:seed");
     cy.signup_ui(userName, password);
     cy.signin_ui(userName, password);
     cy.onboarding_ui();

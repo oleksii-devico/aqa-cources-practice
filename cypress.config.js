@@ -1,4 +1,7 @@
+const { default: axios } = require("axios");
 const { defineConfig } = require("cypress");
+
+testDataApiEndpoint = "http://localhost:3001/testData";
 
 module.exports = defineConfig({
   projectId: "vixnrq",
@@ -10,7 +13,13 @@ module.exports = defineConfig({
     },
     specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on("task", {
+        async "db:seed"() {
+          // seed database with test data
+          const { data } = await axios.post(`${testDataApiEndpoint}/seed`);
+          return data;
+        },
+      });
     },
   },
 });
