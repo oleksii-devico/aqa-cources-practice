@@ -8,4 +8,7 @@ export const main_page = {
   onboarding_accountNumber_field: "#bankaccount-accountNumber-input",
   onboarding_submit_button: '[data-test="bankaccount-submit"]',
   onboarding_success_window: '[data-test="user-onboarding-dialog-title"]',
+  bankAccounts_tab: '[data-test="sidenav-bankaccounts"]',
+  newTransaction_button: '[data-test="nav-top-new-transaction"]',
+  mine_tab: '[data-test="nav-personal-tab"]',
 };
