@@ -11,7 +11,7 @@ module.exports = defineConfig({
       runMode: 1,
       openMode: 0,
     },
-    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
+    specPattern: "cypress/e2e/**/*.spec.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       on("task", {
         async "db:seed"() {
